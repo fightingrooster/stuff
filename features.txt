@@ -1,0 +1,11 @@
+
+features to be implemented
+    done- task bg color based on status
+    done- re-implement calendar view
+    done -toggle milestone group view
+    done-view task info on hover
+
+    code add delete edit event listers for tasks and milestones.
+
+
+

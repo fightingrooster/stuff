@@ -1,0 +1,523 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+  height: 100%;
+  font-family: 'Roboto';
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.date-picker-container{
+    display:flex;
+    align-items:center;
+    padding:1rem;
+
+    .date-picker{
+        margin-left:4rem;
+        display:flex;
+        align-items:center;
+
+        .picker-wrapper{
+            position:relative;
+        }
+
+        .date-wrapper{
+            position:relative;
+            background:red;
+        }
+
+        #date-input{
+            display: none;
+        }
+
+        .picker{
+            margin:0 1rem 0 1rem;
+            cursor:pointer;
+            padding:0.2rem;
+            border:1px solid transparent;
+            color:grey;
+        }
+
+        .picker:hover{
+            border-radius: 0.3rem;
+            background:#F9F9FF;
+            border:1px solid #dde8f4;
+            transition:200ms all ease-in;
+            cursor:pointer;
+        }
+
+        .date-picker-btn{
+            border:1px solid #dde8f4;
+            border-radius: 0.3rem;
+            color:#a9bbd4;
+            cursor:pointer;
+            padding:0.2rem 0.6rem 0.2rem 0.6rem;
+        }
+
+        .date-picker-btn:hover{
+            transition:100ms all ease-in;
+            color:grey;
+        }
+    }
+
+}
+
+.sidebar{
+    background: black;
+    color:white;
+    padding:1rem;
+    max-width:5rem;
+}
+
+.topbar{
+    display:flex;
+    border:1px solid #d6e4f3;
+}
+
+.project-details{
+    flex:1;
+    padding:1rem;
+    display:flex;
+    justify-content: space-evenly;
+    border-right:1px solid #d6e4f3;
+}
+
+.calendar{
+    display:grid;
+    flex:3;
+}
+
+.content{
+    flex:3;
+}
+
+.chart-content{
+    min-height:100vh;
+}
+
+.chart-container{
+    display: flex;
+}
+
+
+.milestone-container{
+    background: #F8F9FB;
+    padding:1rem;
+    flex:1;
+}
+
+.milestone-toggle{
+    color:#a9bbd4;
+    cursor:pointer;
+    margin-right:1rem;
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.element-fade{
+    transition:150ms ease-in-out;
+    display:none;
+}
+
+.toggle-visible{
+    display:flex;
+}
+
+.milestone-title{
+    background:rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+    padding:0.5rem;
+    font-size:18px;
+    border-radius:0.5rem;
+    display:flex;
+}
+
+.milestone-tasks{
+    margin-left:2rem;
+}
+
+.milestone-task{
+    --padding:0.5rem;
+    display:flex;
+}
+
+
+.indicator-lines{
+    min-width:5%;
+    .indicator-line:nth-child(odd){
+        min-height:50%;
+        border-left: solid black 1px;
+        border-bottom: solid black 1px;
+    }
+    .indicator-line:nth-child(even){
+        min-height:50%;
+        border-left: solid black 1px;
+    }
+}
+
+.milestone-task-content{
+    display:flex;
+    padding:1rem 1rem 1rem 0;
+    width:100%;
+}
+
+.milestone-task-duration{
+    margin-left: auto;
+    margin-right: 8rem;
+}
+
+.task-grid-lines-wrapper{
+    width:100%;
+    flex:3;
+    position:relative;
+    .task-grid-lines{
+        background: rgb(255, 255, 255);
+        display:grid;
+        width:100%;
+        height:100%;
+        position:absolute;
+    }
+
+    .tasks-grid{
+        display:grid;
+        grid-template-columns: repeat(31, 1fr);
+        width:100%;
+        height:100%;
+        position:absolute;
+        padding-top:4.75rem;
+    }
+}
+
+
+.task{
+    height: 2rem;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;
+    margin-bottom:1rem;
+    color:white;
+}
+
+
+.task-not-visible{
+    visibility:hidden;
+    margin-bottom:3rem;
+}
+
+#task-1{
+    grid-column:1/4;
+    grid-row:1;
+}
+
+#task-2{
+    grid-column:3/5;
+    grid-row:2;
+}
+
+#task-3{
+    grid-column:6/9;
+    grid-row:3;
+}
+
+.span-grid-column{
+    border-right: solid #e9ebf5 1px;
+}
+.span-grid-column-cal{
+    border-right: solid #e9ebf5 1px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:gray;
+}
+
+.btn-wrappers{
+    display:flex;
+}
+
+.btn{
+    background:#d4e9fe;
+    color:#5597d9;
+    border-radius:0.2rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0.2rem;
+    margin-left:1rem;
+    margin-bottom:1rem;
+    cursor:pointer;
+}
+
+.new-task-btn:hover{
+    background:#b5d9fd;
+    transition:100ms ease-in-out;
+}
+
+.form{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background:white;
+    width:35%;
+    z-index:2;
+    background:rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+    padding:3rem 4rem 3rem 4rem;
+    display:none;
+    flex-direction:column;
+    color:rgba(0, 0, 0, 0.5);
+
+}
+
+.form-show{
+    display:flex;
+}
+
+label{
+    color:#7c8595;
+    margin-bottom:0.5rem;
+}
+
+.form-component{
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    background:#f9f9fd;
+    border:none;
+    padding:0.3rem 1rem 0.3rem 1rem;
+    padding:0.3rem;
+    margin-bottom:1rem;
+    border-radius:0.3rem;
+}
+
+.form-select-component{
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    background:#f9f9fd;
+    border:none;
+    padding:0.3rem 1rem 0.3rem 1rem;
+    margin-bottom:1rem;
+    border-radius:0.3rem;
+}
+
+.form-submit{
+    background:#d4e9fe;
+    color:#5597d9;
+    border-radius:0.2rem;
+    display:flex;
+    padding:0.5rem;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.form-submit:hover{
+    background:#b5d9fd;
+    transition:100ms ease-in-out;
+}
+
+.task-hover-container{
+    position:absolute;
+    transform:translate(-50%, -50%);
+    background:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+    z-index:2;
+    justify-content:space-evenly;
+    min-width:30%;
+    padding:1rem;
+    display:none;
+    border-radius:0.5rem;
+
+    .hover-label{
+        color:#7c8595;
+    }
+
+    .task-hover-wrapper{
+        display:flex;
+        flex-direction:column;
+
+        .hover-label{
+            margin-bottom:0.1rem;
+        }
+
+        .hover-value{
+            margin-bottom:1rem;
+        }
+    }
+
+}
+
+.task-hover-visible{
+    display:flex;
+}
+
+
+.task-menu{
+    display:none;
+    flex-direction:row;
+    align-items:start;
+    padding:0.5rem;
+    background:white;
+    border-radius:0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+    color:rgba(0,0,0, 0.7);
+    z-index:3;
+    position:absolute;
+    width:10%;
+
+    .task-menu-option{
+        padding:0.5rem;
+        border-radius:0.5rem;
+        margin-bottom:0.5rem;
+        width:100%;
+        display:flex;
+        align-items:center;
+        cursor:pointer;
+    }
+
+    .task-menu-option i{
+        margin-right:0.5rem;
+    }
+
+    .task-menu-option:hover{
+        background:#f2f5f6;
+        color:rgba(0,0,0, 0.5);
+
+    }
+
+    .task-menu-option-delete{
+        color:#ff5963;
+    }
+
+    .task-menu-option-delete:hover{
+        color:#ff5963;
+    }
+
+    .task-menu-statuses{
+        display:none;
+        width:95%;
+        background:white;
+        position:absolute;
+        padding:0.5rem 0.8rem 0 0.8rem;
+        top:6rem;
+        left:9rem;
+        border-radius:0.5rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+    }
+
+}
+
+.task-menu-visible{
+    display:flex;
+}
+
+.task-deletion-screen{
+    display:none;
+    background:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+    width:35%;
+    padding:2rem;
+    border-radius:0.5rem;
+    position: absolute;
+    top:20%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:3;
+    .task-deletion-wrapper{
+        display:flex;
+
+    }
+
+    color:rgba(0, 0, 0, 0.7);
+
+
+    .task-deletion-wrapper{
+        margin-top:1rem;
+    }
+
+    .confirm-btn{
+        cursor:pointer;
+        padding: 0.5rem 2rem 0.5rem 2rem;
+        border-radius:0.3rem;
+    }
+
+    #btn-delete{
+        border:solid 1px #ff5963;
+        background:#ff5963;
+        color:white;
+        margin-right:1rem;
+    }
+
+    #btn-reject{
+        border:solid 1px rgba(0, 0, 0, 0.5);
+        color:rgba(0, 0, 0, 0.8);
+        margin-right:1rem;
+    }
+
+    .task-deletion-close{
+        display:flex;
+        justify-content:flex-end;
+        margin-left:auto;
+        font-size:1.3rem;
+        color:rgba(0, 0, 0, 0.5);
+    }
+
+}
+
+.task-deletion-show{
+    display:block;
+}
+
+.task-deletion-close i{
+    cursor:pointer;
+}
